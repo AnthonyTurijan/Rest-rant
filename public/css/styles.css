@@ -46,3 +46,8 @@ main {
     margin-left: 20px;
     background-color: white;
 }
+
+/* styling for show page */
+h2 {
+    color: skyblue
+}
