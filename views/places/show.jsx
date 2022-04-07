@@ -18,6 +18,9 @@ function show (data){
                         <strong>- {c.author} </strong>
                     </h3>
                     <h4>Rating: {c.stars}  </h4>
+                    <form method='POST' action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`} >
+                        <input type='submit' className='btn btn-danger' value='Delete Comment' />
+                    </form>
                 </div>
             )
         })
@@ -44,6 +47,33 @@ function show (data){
                         <h4> Serving {data.place.cuisines}</h4>
                         <br/>
                         <hr/>
+                        <h2>Leave a Comment!</h2>
+                        <form action={`/places/${data.place.id}/comment`} method='POST' >
+                            <div className="row">
+                                <div className="form-group col-sm-12">
+                                    <label htmlFor='content' >Content</label>
+                                    <textarea id='content' name='content' className='form-control' ></textarea>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="form-group col-sm-4">
+                                    <label htmlFor="author">Author</label>
+                                    <input id="author" name="author" className="form-control" />
+                                </div>
+                                <div className="form-group col-sm-4">
+                                    <label htmlFor="stars">Star Rating</label>
+                                    <input type="range" step="0.5" min="1" max="5" id="stars" name="stars" className="form-control" />
+                                </div>
+                                <div className="form-check form-switch form-group col-sm-2 " >
+                                    <label htmlFor="rant">Rant?</label>
+                                    <div className="d-flex justify-content-center" >
+                                    <input type="checkbox" id="rant" name="rant" className="form-check-input" id="flexSwitchCheckDefault" />
+                                    </div>
+                                </div>
+                            </div>
+                            <input type='submit' className='btn btn-primary' value='Add comment'  />
+                        </form>
+                        <br/>
                         <h2>Comments</h2>
                         {comments}
                     
