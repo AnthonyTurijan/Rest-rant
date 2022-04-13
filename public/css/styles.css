@@ -47,6 +47,10 @@ main {
     background-color: white;
 }
 
+#new-button{
+    padding: 10px 30px
+}
+
 /* styling for show page */
 h2 {
     color: skyblue
@@ -54,4 +58,9 @@ h2 {
 
 div {
     padding: 2px;
+}
+
+#show-page{
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

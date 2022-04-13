@@ -47,8 +47,10 @@ function new_form(data){
                     <label htmlFor="cuisines">Cuisines</label>
                     <input className="form-control" id="cuisines" name="cuisines" required />
                   </div>
-                  <input className="btn btn-primary" type="submit" value="Add Place" />
+                  <br/>
+                  <input id='new-button' className="btn btn-primary" type="submit" value="Add Place" />
                 </form>
+                <br/>
               </main>
             </Def>
         )

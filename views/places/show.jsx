@@ -1,6 +1,7 @@
 //require react
 const React = require('react')
 const Def = require('../default')
+const comment = require('../../models/comment')
 
 function show (data){
     let comments =(
@@ -14,20 +15,19 @@ function show (data){
         </h3>
       )
       if (data.place.comments.length) {
-        let sumRatings = data.place.comments.reduce((tot, c) => {
-          return tot + c.stars
+        let sumRatings = data.place.comments.reduce((tot, comment) => {
+          return tot + comment.stars
         }, 0)
-        let averageRating = Math.round(sumRatings / data.place.comments.length)
+        let averageRating = Math.round(sumRatings/data.place.comments.length)
         let stars = ''
-        for (let i = 0; i < averageRating; i++) {
-          stars += '⭐️'
+        for(let i=0; i < averageRating; i++){
+            stars += '⭐️'
         }
         rating = (
-          <h3>
-            {stars} stars
-          </h3>
-        )}
-    if(data.place.comments.length){
+            <h3>
+                {stars} stars
+            </h3>
+        )
         comments = data.place.comments.map(c=>{
             return(
                 <div className='border' >
@@ -50,7 +50,7 @@ function show (data){
                 <div className="row">
                     <div className="col-sm-6">
                         
-                        <img src = {data.place.pic} alt={data.place.name} />
+                        <img id='show-page' src = {data.place.pic} alt={data.place.name} />
                         <h3>
                             Located in {data.place.city}, {data.place.state}
                         </h3>
@@ -58,7 +58,7 @@ function show (data){
                     <div className="col-sm-6">
                         <h1>{data.place.name}</h1>
                         <h2>Rating</h2>
-                        <p>Currently unrated</p>
+                        <p>{rating}</p>
                         <h2>Description</h2>
                         <h3>
                             {data.place.showEstablished()}
